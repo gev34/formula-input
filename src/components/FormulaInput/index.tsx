@@ -2,7 +2,7 @@
 import React, { useState, useRef } from 'react';
 import { Calculator, Variable, Hash } from 'lucide-react';
 
-import useFormulaStore from '../../store/formulaStore';
+import useFormulaStore from './store/formulaStore';
 import useAutocomplete from './hooks/useAutocomplete';
 
 import TagDropdown from './components/TagDropdown';

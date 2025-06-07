@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import mockAutocompleteAPI from '../../../api/useAutocomplete';
+import mockAutocompleteAPI from '../api/useAutocomplete';
 
 const useAutocomplete = (query: string) => (useQuery<string[]>({
     queryKey: ['autocomplete', query],
