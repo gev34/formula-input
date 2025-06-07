@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect, RefObject } from 'react';
 import { ChevronDown, X, Variable } from 'lucide-react';
 
-import useFormulaStore from '../../store/formulaStore';
+// i will create an import alias with eslint if i make it in time
+import useFormulaStore from '../../../../store/formulaStore';
 
 
 interface TagDropdownProps {

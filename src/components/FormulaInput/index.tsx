@@ -3,9 +3,12 @@ import React, { useState, useRef } from 'react';
 import { Calculator, Variable, Hash } from 'lucide-react';
 
 import useFormulaStore from '../../store/formulaStore';
-import useAutocomplete from '../../hooks/useAutocomplete';
-import TagDropdown from '../TagDropdown';
+import useAutocomplete from './hooks/useAutocomplete';
 
+import TagDropdown from './components/TagDropdown';
+
+// need to create an correct prettier options, sorry if I don't make it :)
+import { FORMULA_BUILDER, FORMULA_BUILDER_DISCLAIMER, INPUT_PLACEHOLDER, OPERATORS } from './config';
 
 const FormulaInput: React.FC = () => {
   const { formula, addToken, removeToken, updateToken, calculateResult } = useFormulaStore();
@@ -18,8 +21,7 @@ const FormulaInput: React.FC = () => {
 
   const { data: suggestions = [] } = useAutocomplete(inputValue);
 
-  const operators = ['+', '-', '*', '/', '(', ')', '^'];
-  const isOperator = (char: string) => operators.includes(char);
+  const isOperator = (char: string) => OPERATORS.includes(char);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -110,8 +112,8 @@ const FormulaInput: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-6">
       <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold text-gray-800">Formula Builder</h1>
-        <p className="text-gray-600">Build complex formulas with autocomplete and variable support</p>
+        <h1 className="text-3xl font-bold text-gray-800">{FORMULA_BUILDER}</h1>
+        <p className="text-gray-600">{FORMULA_BUILDER_DISCLAIMER}</p>
       </div>
 
       <div className="relative" ref={containerRef}>
@@ -143,7 +145,7 @@ const FormulaInput: React.FC = () => {
               value={inputValue}
               onChange={handleInputChange}
               onKeyDown={handleKeyDown}
-              placeholder="Type variable, number, or operator..."
+              placeholder={INPUT_PLACEHOLDER}
               autoComplete="off"
               spellCheck={false}
               aria-label="Formula input"
